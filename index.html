@@ -144,7 +144,7 @@
               <div class="ai-card-icon">🔍</div>
               <div class="ai-card-info">
                 <span>Seguimiento Detallado</span>
-                <p>Visualización e historial de los 5 principales documentos del expediente.</p>
+                <p>Visualización e historial de los 6 principales documentos del expediente.</p>
               </div>
             </div>
           </div>
@@ -199,55 +199,51 @@
                 Seleccione una pieza jurídica indexada del expediente para desplegar el entorno virtual de lectura.
               </p>
 
-              <div class="sub-tabs-container-grid">
-                <button class="sub-tab-card active" onclick="cambiarSubTab('sub1', 'archivos/acta1.pdf', 'Clic en el documento que quiere visualizar')">
-                  <span class="doc-icon">📄</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Acta de Denuncia</span>
-                    <span class="doc-desc-tab">Acta de denuncia verbal</span>
-                  </div>
-                </button>
-                
-                <button class="sub-tab-card" onclick="cambiarSubTab('sub2', 'archivos/apertura2.pdf', 'Documento 2: Contestación')">
-                  <span class="doc-icon">💼</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Apertura de Investigación</span>
-                    <span class="doc-desc-tab">Apertura de investigación</span>
-                  </div>
-                </button>
-                
-                <button class="sub-tab-card" onclick="cambiarSubTab('sub3', 'archivos/formalización3.pdf', 'Documento 3: Auto Calificatorio')">
-                  <span class="doc-icon">⚖️</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Formalización y Continuación</span>
-                    <span class="doc-desc-tab">Formalización y continuación de investigación</span>
-                  </div>
-                </button>
-                
-                <button class="sub-tab-card" onclick="cambiarSubTab('sub4', 'archivos/acusación4.pdf', 'Documento 4: Medios Probatorios')">
-                  <span class="doc-icon">🗂️</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Acusación Directa</span>
-                    <span class="doc-desc-tab">Acusación directa</span>
-                  </div>
-                </button>
+             <div class="contenedor-botones-qr">
 
-                <button class="sub-tab-card" onclick="cambiarSubTab('sub4', 'archivos/sentencia5.pdf', 'Documento 5: Medios Probatorios 2')">
-                  <span class="doc-icon">🗂️</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Sentencia</span>
-                    <span class="doc-desc-tab">Sentencia</span>
-                  </div>
-                </button>
-                
-                <button class="sub-tab-card" onclick="cambiarSubTab('sub5', 'archivos/auto6.pdf', 'Documento 6: Sentencia / Dictamen')">
-                  <span class="doc-icon">🏆</span>
-                  <div class="doc-info">
-                    <span class="doc-title-tab">Auto</span>
-                    <span class="doc-desc-tab">Auto que declara consentida la sentencia</span>
-                  </div>
-                </button>
-              </div>
+    <div class="fila-procesal">
+        <button id="btn-acta" class="btn-sistema" onclick="mostrarActa()">Acta de denuncia</button>
+        <div class="qr-contenedor">
+            <img src="qr/acta_denuncia.png" alt="QR Acta de Denuncia" class="qr-img">
+        </div>
+    </div>
+
+    <div class="fila-procesal">
+        <button id="btn-apertura" class="btn-sistema" onclick="mostrarApertura()">Apertura de investigación</button>
+        <div class="qr-contenedor">
+            <img src="qr/apertura_investigacion.png" alt="QR Apertura de Investigación" class="qr-img">
+        </div>
+    </div>
+
+    <div class="fila-procesal">
+        <button id="btn-formalizacion" class="btn-sistema" onclick="mostrarFormalizacion()">Formalización y continuación</button>
+        <div class="qr-contenedor">
+            <img src="qr/formalizacion_continuacion.png" alt="QR Formalización" class="qr-img">
+        </div>
+    </div>
+
+    <div class="fila-procesal">
+        <button id="btn-acusacion" class="btn-sistema" onclick="mostrarAcusacion()">Acusación Directa</button>
+        <div class="qr-contenedor">
+            <img src="qr/acusacion_directa.png" alt="QR Acusación Directa" class="qr-img">
+        </div>
+    </div>
+
+    <div class="fila-procesal">
+        <button id="btn-sentencia" class="btn-sistema" onclick="mostrarSentencia()">Sentencia</button>
+        <div class="qr-contenedor">
+            <img src="qr/sentencia.png" alt="QR Sentencia" class="qr-img">
+        </div>
+    </div>
+
+    <div class="fila-procesal">
+        <button id="btn-auto" class="btn-sistema" onclick="mostrarAuto()">Auto</button>
+        <div class="qr-contenedor">
+            <img src="qr/auto.png" alt="QR Auto" class="qr-img">
+        </div>
+    </div>
+
+</div>
 
               <div class="sub-tab-content-viewer-premium">
                 <div class="viewer-top-meta">
