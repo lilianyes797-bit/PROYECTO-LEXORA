@@ -38,9 +38,20 @@
           </div>
           <div class="balance-base"></div>
         </div>
-        <div class="control-buttons">
-          <button class="btn-tilt" onmousedown="startTilt(-1)" onmouseup="stopTilt()" onmouseleave="stopTilt()">◀</button>
-          <button class="btn-tilt" onmousedown="startTilt(1)" onmouseup="stopTilt()" onmouseleave="stopTilt()">▶</button>
+       <div class="control-buttons">
+          <button class="btn-tilt" 
+                  onmousedown="startTilt(-1)" 
+                  onmouseup="stopTilt()" 
+                  onmouseleave="stopTilt()"
+                  ontouchstart="event.preventDefault(); startTilt(-1)" 
+                  ontouchend="stopTilt()">◀</button>
+                  
+          <button class="btn-tilt" 
+                  onmousedown="startTilt(1)" 
+                  onmouseup="stopTilt()" 
+                  onmouseleave="stopTilt()"
+                  ontouchstart="event.preventDefault(); startTilt(1)" 
+                  ontouchend="stopTilt()">▶</button>
         </div>
       </div>
     </div>
