@@ -765,3 +765,57 @@ body {
     touch-action: manipulation;
   }
 }
+/* ==========================================================================
+   REESTRUCTURACIÓN DEL PANEL PRINCIPAL PARA CELULARES
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* Hace que el contenedor principal no se desborde */
+  .app-layout {
+    flex-direction: column !important;
+  }
+
+  /* La barra lateral se adapta arriba */
+  .sidebar-elite {
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px !important;
+  }
+
+  .nav-menu-elite {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+  }
+
+  .nav-item-elite {
+    font-size: 0.8rem !important;
+    padding: 8px !important;
+  }
+
+  /* El área de contenido se expande correctamente */
+  .content-viewport {
+    padding: 10px !important;
+    width: 100% !important;
+  }
+
+  /* ¡AQUÍ SE CORRIGEN LAS TARJETAS DISTORSIONADAS! */
+  .ia-options-grid {
+    grid-template-columns: 1fr !important; /* Se ponen en una sola columna, una abajo de otra */
+    gap: 12px !important;
+  }
+
+  .sub-tabs-container-grid {
+    grid-template-columns: 1fr !important; /* Los botones de los documentos también en fila única */
+  }
+
+  /* Ajuste para que las tablas no rompan la pantalla */
+  .table-container-premium {
+    overflow-x: auto !important; /* Permite deslizar la tabla con el dedo de lado a lado */
+    width: 100% !important;
+  }
+
+  .premium-table th, .premium-table td {
+    padding: 8px !important;
+    font-size: 0.8rem !important;
+  }
+}
