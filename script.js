@@ -64,8 +64,16 @@ function generarDocumento() { alert("Construyendo borrador con matrices heuríst
 function abrirVisorPDF(tituloDoc, urlArchivoPdf) {
     document.getElementById('modal-document-title').innerText = tituloDoc;
     const container = document.getElementById('modal-embed-container');
-    
-    container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
+
+    // Detectamos si es un celular para aplicar el visor compatible
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // Usamos el visor oficial de Google Drive que renderiza PDFs en celulares de forma gratuita
+        const urlAbsoluta = window.location.origin + '/' + urlArchivoPdf;
+        container.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
+    } else {
+        // En computadora se sigue viendo de forma nativa e instantánea
+        container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
+    }
     document.getElementById('modal-pdf-viewer').classList.remove('hidden');
 }
 
@@ -284,27 +292,29 @@ if (dropZone) {
 // CONTROLADOR DE SUB-PESTAÑAS INTERNAS PARA SEGUIMIENTO DETALLADO (CORREGIDO)
 // ==========================================================================
 function cambiarSubTab(subTabId, urlPdf, titulo) {
-    // 1. Limpiamos el estado activo de todos los botones de sub-pestañas
     const botones = document.querySelectorAll('.sub-tab-card');
     botones.forEach(btn => btn.classList.remove('active'));
     
-    // 2. CORRECCIÓN SINTÁCTICA: Asignamos la clase activa correctamente al botón pulsado
     if (window.event && window.event.currentTarget) {
         window.event.currentTarget.classList.add('active');
     }
 
-    // 3. Actualizamos el título del documento en el visor principal
-    const titleLabel = document.getElementById('sub-viewer-title');
-    if (titleLabel) {
-        titleLabel.innerText = titulo;
-    }
-
-    // 4. Inyectamos de forma segura el elemento EMBED para renderizar el archivo PDF nativo
+    document.getElementById('sub-viewer-title').innerText = titulo;
     const frameContainer = document.getElementById('sub-pdf-frame');
+    
     if (frameContainer) {
-        frameContainer.innerHTML = `
-            <embed src="${urlPdf}" type="application/pdf" style="width:100%; height:100%; border:none;">
-        `;
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Visor forzado para celulares en la sección interna
+            const urlAbsoluta = window.location.origin + '/' + urlPdf;
+            frameContainer.innerHTML = `
+                <iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>
+            `;
+        } else {
+            // Visor nativo para computadoras
+            frameContainer.innerHTML = `
+                <embed src="${urlPdf}" type="application/pdf" style="width:100%; height:100%; border:none;">
+            `;
+        }
     }
 }
 
