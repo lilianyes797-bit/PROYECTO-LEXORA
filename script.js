@@ -59,31 +59,24 @@ function logoutFunction() { location.reload(); }
 function generarDocumento() { alert("Construyendo borrador con matrices heurísticas de VIPER..."); }
 
 // ==========================================
-// VISOR DE ARCHIVOS PDF ADJUNTOS REALES (COMPATIBLE CON CELULARES Y PC)
+// VISOR DE ARCHIVOS PDF ADJUNTOS REALES
 // ==========================================
 function abrirVisorPDF(tituloDoc, urlArchivoPdf) {
     document.getElementById('modal-document-title').innerText = tituloDoc;
     const container = document.getElementById('modal-embed-container');
-    
-    if (container) {
-        // Si el usuario entra desde un Celular (Android, iPhone, etc.)
-        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            // Construimos la ruta en internet del archivo de forma dinámica
-            const urlAbsoluta = window.location.origin + window.location.pathname.replace('index.html', '') + urlArchivoPdf;
-            
-            // Forzamos al celular a usar el visor seguro de Google Docs
-            container.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
-        } else {
-            // Si entra desde una computadora, mantiene tu visor ultra rápido original
-            container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
-        }
+
+    // Detectamos si es un celular para aplicar el visor compatible
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // Usamos el visor oficial de Google Drive que renderiza PDFs en celulares de forma gratuita
+        const urlAbsoluta = window.location.origin + '/' + urlArchivoPdf;
+        container.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
+    } else {
+        // En computadora se sigue viendo de forma nativa e instantánea
+        container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
     }
-    
-    // Mostramos la ventana flotante en la pantalla
     document.getElementById('modal-pdf-viewer').classList.remove('hidden');
 }
 
-// ESTA ES LA PARTE QUE DEBES CONSERVAR JUSTO DEBAJO:
 function cerrarVisorPDF() {
     document.getElementById('modal-pdf-viewer').classList.add('hidden');
     document.getElementById('modal-embed-container').innerHTML = '';
