@@ -292,3 +292,55 @@
   <script src="script.js"></script>
 </body>
 </html>
+/* ==========================================================================
+   CONFIGURACIÓN DE BOTONES PROCESALES CON CÓDIGOS QR (LADO DERECHO)
+   ========================================================================== */
+
+/* Contenedor general que agrupa todas las filas */
+.contenedor-botones-qr {
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* Espaciado uniforme y estético entre cada fila */
+    width: 100%;
+    max-width: 480px; /* Ajusta este ancho según el diseño de tu barra lateral o contenedor */
+    margin: 0 auto;
+}
+
+/* Fila individual: Mantiene el botón a la izquierda y el QR a la derecha */
+.fila-procesal {
+    display: flex;
+    justify-content: space-between; /* Envía el QR al extremo derecho */
+    align-items: center; /* Centrado vertical perfecto entre el botón y el QR */
+    width: 100%;
+}
+
+/* Asegura que el botón ocupe el espacio disponible de forma fluida */
+.fila-procesal .btn-sistema {
+    flex-grow: 1;
+    margin-right: 15px; /* Separación prudente antes del QR */
+    /* Aquí se heredan automáticamente tus estilos visuales previos de Lexora */
+}
+
+/* Contenedor del código QR para mantener proporciones perfectas */
+.qr-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px; /* Espacio reservado para el área del QR */
+    height: 48px;
+    background-color: #ffffff; /* Fondo blanco para facilitar el escaneo */
+    border: 1px solid #e0e0e0; /* Borde sutil y elegante */
+    border-radius: 6px; /* Bordes ligeramente suavizados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave profesional */
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+/* Configuración de la imagen del QR: Escaneable y nítida */
+.qr-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Evita que la imagen se distorsione */
+    image-rendering: -webkit-optimize-contrast; /* Optimiza la nitidez del QR en navegadores */
+    image-rendering: crisp-edges;
+}
