@@ -939,3 +939,28 @@ body {
     image-rendering: -webkit-optimize-contrast; /* Optimiza la nitidez del QR en navegadores */
     image-rendering: crisp-edges;
 }
+/* Configuración de las opciones internas para alinear el QR a la derecha */
+.opcion-seguimiento {
+    display: flex;
+    justify-content: space-between; /* Empuja el texto a la izquierda y el QR a la derecha */
+    align-items: center;           /* Centra verticalmente el texto y el QR */
+    padding: 10px 15px;
+    list-style: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo y tamaño del código QR tipo ícono */
+.icono-qr {
+    width: 24px;                  /* Tamaño ideal de ícono */
+    height: 24px;                 /* Mantiene la proporción cuadrada */
+    object-fit: contain;
+    margin-left: 15px;            /* Separa el texto del QR */
+    border-radius: 4px;           /* Suaviza los bordes del QR */
+    transition: transform 0.2s ease;
+}
+
+/* Efecto opcional: el QR se agranda sutilmente cuando pasas el mouse por encima */
+.opcion-seguimiento:hover .icono-qr {
+    transform: scale(1.1);
+}
