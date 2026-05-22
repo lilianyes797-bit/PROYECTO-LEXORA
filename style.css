@@ -704,3 +704,64 @@ body {
     0 0 10px #00e5ff,
     0 0 20px rgba(0,229,255,0.5) !important;
 }
+/* ==========================================================================
+   ADAPTACIÓN RESPONSIVA PARA CELULARES (INTRO & BALANZA)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* Reduce el contenedor de la intro para que use scroll si es necesario */
+  .intro-content-wrapper {
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 15px !important;
+    width: 95% !important;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .intro-side-text {
+    text-align: center;
+    padding: 0 !important;
+  }
+
+  .mission-box-left {
+    margin: 10px auto !important;
+  }
+
+  /* REESCALADO DE LA BALANZA PARA PANTALLAS PEQUEÑAS */
+  .game-container {
+    width: 260px !important; /* Más pequeña para que no se desborde */
+    height: 180px !important;
+    margin: 0 auto !important;
+    transform: scale(0.9);
+  }
+
+  .balance-h-beam {
+    width: 200px !important; /* Ajuste del ancho del eje horizontal */
+  }
+
+  .plate.left-plate {
+    left: -15px !important;
+  }
+
+  .plate.right-plate {
+    right: -15px !important;
+  }
+
+  /* Ajuste de botones de control para que sean fáciles de presionar con el dedo */
+  .control-buttons {
+    gap: 30px !important;
+    margin-top: 15px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .btn-tilt {
+    width: 65px !important;
+    height: 65px !important;
+    font-size: 1.8rem !important;
+    /* Evita que el celular haga zoom o parpadee al mantenerlo presionado */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+}
