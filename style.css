@@ -819,3 +819,71 @@ body {
     font-size: 0.8rem !important;
   }
 }
+
+/* ==========================================================================
+   SOLUCIÓN DE DISTORSIÓN DE PANTALLA PRINCIPAL EN CELULARES
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* Forzamos a que el menú y el panel se pongan uno abajo del otro */
+  .app-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* La barra lateral gris ahora se acomoda arriba como un encabezado */
+  .sidebar-elite {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    padding: 10px !important;
+  }
+
+  .nav-menu-elite {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center;
+  }
+
+  .nav-item-elite {
+    font-size: 0.75rem !important;
+    padding: 6px 10px !important;
+    width: auto !important;
+  }
+
+  /* El contenedor de las respuestas se estira al ancho real del celular */
+  .content-viewport {
+    margin-left: 0 !important; /* Eliminamos el espacio vacío de la PC */
+    width: 100% !important;
+    padding: 12px !important;
+  }
+
+  /* Las 4 tarjetas del menú principal de IA se ordenan en una sola columna limpia */
+  .ia-options-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .ai-card {
+    width: 100% !important; /* Evita que las tarjetas se salgan por la derecha */
+  }
+
+  /* Los 6 botones de las piezas procesales se acomodan uno abajo de otro */
+  .sub-tabs-container-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* Previene que las tablas de demandantes/demandados deformen la pantalla */
+  .table-container-premium {
+    width: 100% !important;
+    overflow-x: auto !important; /* Permite deslizar la tabla con el dedo si es muy grande */
+    display: block !important;
+  }
+}
