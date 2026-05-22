@@ -144,7 +144,7 @@
               <div class="ai-card-icon">🔍</div>
               <div class="ai-card-info">
                 <span>Seguimiento Detallado</span>
-                <p>Visualización e historial de los 6 principales documentos del expediente.</p>
+                <p>Visualización e historial de los 5 principales documentos del expediente.</p>
               </div>
             </div>
           </div>
@@ -199,27 +199,55 @@
                 Seleccione una pieza jurídica indexada del expediente para desplegar el entorno virtual de lectura.
               </p>
 
-             <div class="seguimiento-contenedor">
-    <button id="btn-seguimiento-principal" class="btn-principal">
-        Seguimiento Detallado
-    </button>
-    
-    <ul class="menu-seguimiento-interno">
-        <li class="opcion-seguimiento">
-            <span class="texto-opcion">Opción Interna 1</span>
-            <img src="qr/qr1.png" alt="QR Opción 1" class="icono-qr">
-        </li>
-        <li class="opcion-seguimiento">
-            <span class="texto-opcion">Opción Interna 2</span>
-            <img src="qr/qr2.png" alt="QR Opción 2" class="icono-qr">
-        </li>
-        <li class="opcion-seguimiento">
-            <span class="texto-opcion">Opción Interna 3</span>
-            <img src="qr/qr3.png" alt="QR Opción 3" class="icono-qr">
-        </li>
-    </ul>
-</div>
-</div>
+              <div class="sub-tabs-container-grid">
+                <button class="sub-tab-card active" onclick="cambiarSubTab('sub1', 'archivos/acta1.pdf', 'Clic en el documento que quiere visualizar')">
+                  <span class="doc-icon">📄</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Acta de Denuncia</span>
+                    <span class="doc-desc-tab">Acta de denuncia verbal</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab('sub2', 'archivos/apertura2.pdf', 'Documento 2: Contestación')">
+                  <span class="doc-icon">💼</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Apertura de Investigación</span>
+                    <span class="doc-desc-tab">Apertura de investigación</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab('sub3', 'archivos/formalización3.pdf', 'Documento 3: Auto Calificatorio')">
+                  <span class="doc-icon">⚖️</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Formalización y Continuación</span>
+                    <span class="doc-desc-tab">Formalización y continuación de investigación</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab('sub4', 'archivos/acusación4.pdf', 'Documento 4: Medios Probatorios')">
+                  <span class="doc-icon">🗂️</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Acusación Directa</span>
+                    <span class="doc-desc-tab">Acusación directa</span>
+                  </div>
+                </button>
+
+                <button class="sub-tab-card" onclick="cambiarSubTab('sub4', 'archivos/sentencia5.pdf', 'Documento 5: Medios Probatorios 2')">
+                  <span class="doc-icon">🗂️</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Sentencia</span>
+                    <span class="doc-desc-tab">Sentencia</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab('sub5', 'archivos/auto6.pdf', 'Documento 6: Sentencia / Dictamen')">
+                  <span class="doc-icon">🏆</span>
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Auto</span>
+                    <span class="doc-desc-tab">Auto que declara consentida la sentencia</span>
+                  </div>
+                </button>
+              </div>
 
               <div class="sub-tab-content-viewer-premium">
                 <div class="viewer-top-meta">
