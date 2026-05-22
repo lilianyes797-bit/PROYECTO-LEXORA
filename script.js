@@ -303,30 +303,25 @@ function cambiarSubTab(subTabId, urlPdf, titulo) {
     const frameContainer = document.getElementById('sub-pdf-frame');
     
     if (frameContainer) {
+        // Si es celular, usamos el visor seguro en línea de Google Docs
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            // Visor forzado para celulares en la sección interna
-            const urlAbsoluta = window.location.origin + '/' + urlPdf;
-            frameContainer.innerHTML = `
-                <iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>
-            `;
+            const urlAbsoluta = window.location.origin + window.location.pathname.replace('index.html', '') + urlPdf;
+            frameContainer.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
         } else {
-            // Visor nativo para computadoras
-            frameContainer.innerHTML = `
-                <embed src="${urlPdf}" type="application/pdf" style="width:100%; height:100%; border:none;">
-            `;
+            // Si es computadora, usa el lector rápido nativo
+            frameContainer.innerHTML = `<embed src="${urlPdf}" type="application/pdf" style="width:100%; height:100%; border:none;">`;
         }
     }
 }
 
-// Interceptamos la carga simulada para inicializar el Documento 1 y activar la vista probabilística de inmediato
+// Interceptamos de forma limpia el procesamiento para abrir la vista probabilística de inmediato
 const originalAnalizarTodoConIA = analizarTodoConIA;
 analizarTodoConIA = function() {
     originalAnalizarTodoConIA();
     setTimeout(() => {
-        // 1. Inicializa el subtab interno (mantiene tu lógica intacta)
-        cambiarSubTab('sub1', 'archivos/acta1.pdf', 'Denuncia');
-        
-        // 2. FUERZA QUIRÚRGICA: Redirige visualmente al Análisis Probabilístico de forma automática
+        // Inicializa el documento 1 en el visor secundario
+        cambiarSubTab('sub1', 'archivos/acta1.pdf', 'Documento 1: Acta de Denuncia');
+        // Redirige la pantalla directamente al Análisis Probabilístico
         mostrarModuloEspecifico('predict');
     }, 1250); 
 };
