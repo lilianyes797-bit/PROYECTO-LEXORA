@@ -59,24 +59,31 @@ function logoutFunction() { location.reload(); }
 function generarDocumento() { alert("Construyendo borrador con matrices heurísticas de VIPER..."); }
 
 // ==========================================
-// VISOR DE ARCHIVOS PDF ADJUNTOS REALES
+// VISOR DE ARCHIVOS PDF ADJUNTOS REALES (COMPATIBLE CON CELULARES Y PC)
 // ==========================================
 function abrirVisorPDF(tituloDoc, urlArchivoPdf) {
     document.getElementById('modal-document-title').innerText = tituloDoc;
     const container = document.getElementById('modal-embed-container');
-
-    // Detectamos si es un celular para aplicar el visor compatible
-    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // Usamos el visor oficial de Google Drive que renderiza PDFs en celulares de forma gratuita
-        const urlAbsoluta = window.location.origin + '/' + urlArchivoPdf;
-        container.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
-    } else {
-        // En computadora se sigue viendo de forma nativa e instantánea
-        container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
+    
+    if (container) {
+        // Si el usuario entra desde un Celular (Android, iPhone, etc.)
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Construimos la ruta en internet del archivo de forma dinámica
+            const urlAbsoluta = window.location.origin + window.location.pathname.replace('index.html', '') + urlArchivoPdf;
+            
+            // Forzamos al celular a usar el visor seguro de Google Docs
+            container.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
+        } else {
+            // Si entra desde una computadora, mantiene tu visor ultra rápido original
+            container.innerHTML = `<embed src="${urlArchivoPdf}" type="application/pdf" class="pdf-embedded-render">`;
+        }
     }
+    
+    // Mostramos la ventana flotante en la pantalla
     document.getElementById('modal-pdf-viewer').classList.remove('hidden');
 }
 
+// ESTA ES LA PARTE QUE DEBES CONSERVAR JUSTO DEBAJO:
 function cerrarVisorPDF() {
     document.getElementById('modal-pdf-viewer').classList.add('hidden');
     document.getElementById('modal-embed-container').innerHTML = '';
@@ -234,13 +241,13 @@ function analizarTodoConIA() {
         document.getElementById('table-partes-body').innerHTML = `
             <tr>
                 <td><strong>DEMANDANTE</strong></td>
-                <td>Justina Apaza Vilca</td>
-                <td>Abog. Tito Nieto Portocarrero (Reg. ICAP 4021)</td>
+                <td>Juana Mamani Vilca</td>
+                <td>Abog. Fredy Nieto Carrera (Reg. ICAP 4021)</td>
                 <td><button class="btn-table-action" onclick="abrirVisorPDF('Poder Consorcial y Constitución', 'archivos/acta1.pdf')">👁 VER PDF REAL</button></td>
             </tr>
             <tr>
                 <td><strong>DEMANDADO</strong></td>
-                <td>Gumercindo Quispe Chayña</td>
+                <td>Gilber Condori Colca</td>
                 <td>Defensa Pública de San Román</td>
                 <td><button class="btn-table-action" onclick="abrirVisorPDF('Contestación Municipal de Demanda', 'archivos/contestacion.pdf')">👁 VER PDF REAL</button></td>
             </tr>
@@ -291,14 +298,34 @@ if (dropZone) {
 // ==========================================================================
 // CONTROLADOR DE SUB-PESTAÑAS INTERNAS PARA SEGUIMIENTO DETALLADO (CORREGIDO)
 // ==========================================================================
-function cambiarSubTab(subTabId, urlPdf, titulo) {
-    const botones = document.querySelectorAll('.sub-tab-card');
-    botones.forEach(btn => btn.classList.remove('active'));
-    
-    if (window.event && window.event.currentTarget) {
-        window.event.currentTarget.classList.add('active');
+function cambiarSubTab(botonPresionado, urlPdf, titulo) {
+    // 1. Desactivamos el estado visual seleccionado de todos los sub-botones
+    document.querySelectorAll('.sub-tab-card').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // 2. Activamos de forma directa el elemento HTML que disparó la acción
+    if (botonPresionado) {
+        botonPresionado.classList.add('active');
     }
 
+    // 3. Actualizamos el encabezado del visor de contenidos
+    const elementoTitulo = document.getElementById('sub-viewer-title');
+    if (elementoTitulo) {
+        elementoTitulo.innerText = titulo;
+    }
+    
+    // 4. Cargamos de forma segura el visor sin romper listeners globales
+    const frameContainer = document.getElementById('sub-pdf-frame');
+    if (frameContainer) {
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            const urlAbsoluta = window.location.origin + window.location.pathname.replace('index.html', '') + urlPdf;
+            frameContainer.innerHTML = `<iframe src="https://docs.google.com/gview?url=${encodeURIComponent(urlAbsoluta)}&embedded=true" style="width:100%; height:100%; border:none;"></iframe>`;
+        } else {
+            frameContainer.innerHTML = `<embed src="${urlPdf}" type="application/pdf" style="width:100%; height:100%; border:none;">`;
+        }
+    }
+}
     document.getElementById('sub-viewer-title').innerText = titulo;
     const frameContainer = document.getElementById('sub-pdf-frame');
     

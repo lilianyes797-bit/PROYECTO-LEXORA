@@ -885,82 +885,102 @@ body {
     width: 100% !important;
     overflow-x: auto !important; /* Permite deslizar la tabla con el dedo si es muy grande */
     display: block !important;
-  }   
+  }
 }
-/* ==========================================================================
-   CONFIGURACIÓN DE BOTONES PROCESALES CON CÓDIGOS QR (LADO DERECHO)
-   ========================================================================== */
-
-/* Contenedor general que agrupa todas las filas */
-.contenedor-botones-qr {
-    display: flex;
-    flex-direction: column;
-    gap: 14px; /* Espaciado uniforme y estético entre cada fila */
-    width: 100%;
-    max-width: 480px; /* Ajusta este ancho según el diseño de tu barra lateral o contenedor */
-    margin: 0 auto;
+/* EFECTO INTERACTIVO PARA LOS MINI QR EN LOS BOTONES DE SEGUIMIENTO */
+.sub-tab-card:hover .qr-mini-icon {
+  transform: scale(1.2); /* Crece un 20% suavemente */
+  color: #00ffff !important; /* Brilla en un cian eléctrico puro */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+/* EFECTOS VISUALES PARA LOS ICONOS QR EN LOS BOTONES */
+.qr-mini-icon {
+  transition: transform 0.25s ease, color 0.25s ease !important;
 }
 
-/* Fila individual: Mantiene el botón a la izquierda y el QR a la derecha */
-.fila-procesal {
-    display: flex;
-    justify-content: space-between; /* Envía el QR al extremo derecho */
-    align-items: center; /* Centrado vertical perfecto entre el botón y el QR */
-    width: 100%;
+.sub-tab-card:hover .qr-mini-icon {
+  transform: scale(1.2); /* Crece sutilmente de tamaño */
+  color: #00ffff !important; /* Brilla en cian eléctrico intenso */
+}
+/* =======================================================
+   DISEÑO ESTÉTICO DE MINIATURAS QR PARA LOS SUB-BOTONES
+   ======================================================= */
+.qr-btn-thumbnail {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 229, 255, 0.4) !important;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.15) !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* Asegura que el botón ocupe el espacio disponible de forma fluida */
-.fila-procesal .btn-sistema {
-    flex-grow: 1;
-    margin-right: 15px; /* Separación prudente antes del QR */
-    /* Aquí se heredan automáticamente tus estilos visuales previos de Lexora */
+/* Efecto visual al pasar el cursor (Hover) */
+.sub-tab-card:hover .qr-btn-thumbnail {
+  transform: scale(1.12) rotate(3deg) !important; /* Crece un poco y gira sutilmente con elegancia */
+  border-color: #00e5ff !important;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important; /* Brillo de neón cian */
 }
 
-/* Contenedor del código QR para mantener proporciones perfectas */
-.qr-contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 48px; /* Espacio reservado para el área del QR */
-    height: 48px;
-    background-color: #ffffff; /* Fondo blanco para facilitar el escaneo */
-    border: 1px solid #e0e0e0; /* Borde sutil y elegante */
-    border-radius: 6px; /* Bordes ligeramente suavizados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave profesional */
-    padding: 3px;
-    box-sizing: border-box;
+/* Ajuste de alineación interna para asegurar compatibilidad perfecta */
+.sub-tab-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+/* =======================================================
+   DISEÑO ESTÉTICO DE MINIATURAS QR PARA LOS SUB-BOTONES
+   ======================================================= */
+.qr-btn-thumbnail {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 229, 255, 0.4) !important;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.15) !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* Configuración de la imagen del QR: Escaneable y nítida */
-.qr-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Evita que la imagen se distorsione */
-    image-rendering: -webkit-optimize-contrast; /* Optimiza la nitidez del QR en navegadores */
-    image-rendering: crisp-edges;
-}
-/* Configuración de las opciones internas para alinear el QR a la derecha */
-.opcion-seguimiento {
-    display: flex;
-    justify-content: space-between; /* Empuja el texto a la izquierda y el QR a la derecha */
-    align-items: center;           /* Centra verticalmente el texto y el QR */
-    padding: 10px 15px;
-    list-style: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Efecto visual animado al pasar el cursor (Hover) */
+.sub-tab-card:hover .qr-btn-thumbnail {
+  transform: scale(1.15) rotate(3deg) !important; /* El QR crece un poquito y gira ligeramente con elegancia */
+  border-color: #00e5ff !important;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.5) !important; /* Brillo de neón cian */
 }
 
-/* Estilo y tamaño del código QR tipo ícono */
-.icono-qr {
-    width: 24px;                  /* Tamaño ideal de ícono */
-    height: 24px;                 /* Mantiene la proporción cuadrada */
-    object-fit: contain;
-    margin-left: 15px;            /* Separa el texto del QR */
-    border-radius: 4px;           /* Suaviza los bordes del QR */
-    transition: transform 0.2s ease;
+/* Alineación interna perfecta para los elementos del botón */
+.sub-tab-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+/* =======================================================
+   ESTILOS PREMIUM PARA ICONOS QR INTERACTIVOS
+   ======================================================= */
+.qr-btn-thumbnail {
+  width: 36px !important;
+  height: 36px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 229, 255, 0.3) !important;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.1) !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease !important;
 }
 
-/* Efecto opcional: el QR se agranda sutilmente cuando pasas el mouse por encima */
-.opcion-seguimiento:hover .icono-qr {
-    transform: scale(1.1);
+/* Animación fluida de escala al interactuar con la tarjeta */
+.sub-tab-card:hover .qr-btn-thumbnail {
+  transform: scale(1.15) rotate(2deg) !important;
+  border-color: #00e5ff !important;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.4) !important;
+}
+
+/* Alineación estructural de los componentes del botón */
+.sub-tab-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-align: left !important;
 }
