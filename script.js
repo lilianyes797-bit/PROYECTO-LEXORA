@@ -35,8 +35,6 @@ function checkEquilibrium() {
         setTimeout(() => {
             const layer = document.getElementById('intro-game-layer');
             if (layer) layer.classList.add('layer-up');
-            // Inicializa de forma segura el primer documento al terminar el juego
-            ejecutarCargaInicialSubTab();
         }, 850);
     }
 }
@@ -44,6 +42,8 @@ function checkEquilibrium() {
 // =======================================================
 // ARQUITECTURA DE ENRUTAMIENTO DE PESTAÑAS (TABS GENERAL)
 // =======================================================
+let subTabInicializado = false; // Bandera para evitar ejecuciones nulas antes de tiempo
+
 function switchMainTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.add('hidden');
@@ -56,33 +56,40 @@ function switchMainTab(tabId) {
         btn.classList.remove('active');
     });
 
-    const triggerBtn = Array.from(document.querySelectorAll('.nav-item-elite')).find(btn => 
-        btn.getAttribute('onclick').includes(tabId)
-    );
-    if (triggerBtn) triggerBtn.classList.add('active');
+    // Buscar y activar el botón de navegación correspondiente
+    const navButtons = document.querySelectorAll('.nav-item-elite');
+    navButtons.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(tabId)) {
+            btn.classList.add('active');
+        }
+    });
+
+    // CORRECCIÓN GITHUB: Inicializa el visor interactivo de forma segura sólo cuando la pestaña es visible
+    if (tabId === 'tab-seguimiento' && !subTabInicializado) {
+        setTimeout(() => {
+            ejecutarCargaInicialSubTab();
+            subTabInicializado = true;
+        }, 50);
+    }
 }
 
 // =======================================================
-// VISUALIZADOR DE EXPEDIENTES Y SELECCIÓN DE BOTÓN (BLINDADO)
+// VISUALIZADOR DE EXPEDIENTES Y SELECCIÓN DE BOTÓN
 // =======================================================
 function cambiarSubTab(botonElemento, urlPdf, titulo) {
-    // 1. Desactivar clases seleccionadas en la rejilla
     document.querySelectorAll('.sub-tab-card').forEach(btn => {
         btn.classList.remove('active');
     });
 
-    // 2. Inyectar de forma nativa e independiente la clase activa usando la autoreferencia
     if (botonElemento) {
         botonElemento.classList.add('active');
     }
 
-    // 3. Modificar el texto del visor
     const labelTitulo = document.getElementById('sub-viewer-title');
     if (labelTitulo) {
         labelTitulo.innerText = titulo;
     }
 
-    // 4. Renderizar PDF con adaptabilidad responsiva
     const frameContainer = document.getElementById('sub-pdf-frame');
     if (frameContainer) {
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -121,7 +128,6 @@ function openPdfModal(titulo, urlPdf) {
     }
 }
 
-// Cierre del visualizador modal
 function closePdfModal() {
     const modal = document.getElementById('modal-pdf-viewer');
     const modalBody = document.getElementById('modal-pdf-body');
