@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEXORA Pro - Sistema de Inteligencia Jurídica | UNA-Puno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="intro-game-layer" class="intro-overlay">
+    <div class="intro-content-wrapper">
+      <div class="intro-side-text">
+        <div class="purpose-badge">✦ Inteligencia Artificial Jurídica</div>
+        <h2 class="logo-text-mini">LEXORA</h2>
+        <div class="mission-box-left">
+          <p class="mission-main-text">
+            Tecnología jurídica avanzada para el 
+            <strong class="unap-tag">análisis predictivo y seguimiento </strong>
+            procesal inteligente.
+          </p>
+        </div>
+      </div>
+      
+      <div class="game-card-container">
+        <h1 class="game-title-main">CALIBRACIÓN OBLIGATORIA</h1>
+        <p id="game-instruction" class="game-subtitle-desc">
+          Mantén presionados los platillos para equilibrar la balanza de la justicia en <span class="gold-highlight">0.0°</span> para desbloquear el acceso.
+        </p>
+
+        <div class="balance-container-visual">
+          <div id="balance-beam" class="balance-beam-element">
+            <div class="plate-left"></div>
+            <div class="plate-right"></div>
+          </div>
+          <div class="balance-base-element"></div>
+        </div>
+
+        <div class="control-buttons-row">
+          <button class="btn-tilt-control" onmousedown="startTilt(-1)" onmouseup="stopTilt()" ontouchstart="startTilt(-1)" ontouchend="stopTilt()">◀ INCLINAR IZQUIERDA</button>
+          <button class="btn-tilt-control" onmousedown="startTilt(1)" onmouseup="stopTilt()" ontouchstart="startTilt(1)" ontouchend="stopTilt()">INCLINAR DERECHA ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container-premium">
+    <header class="top-bar-elite">
+      <div class="brand-wrapper">
+        <span class="scale-icon-logo">⚖️</span>
+        <div>
+          <h1 class="main-app-title">LEXORA <span class="pro-version-badge">PRO</span></h1>
+          <p class="sub-app-tagline">Corte Superior de Justicia | Módulo Anticorrupción UNA-Puno</p>
+        </div>
+      </div>
+      <div class="secure-connection-status">
+        <span class="pulse-dot-green"></span>
+        ID: EXP-2026-NCPP
+      </div>
+    </header>
+
+    <div class="main-layout-grid">
+      <aside class="sidebar-menu-wrapper">
+        <nav class="nav-menu-elite">
+          <button class="nav-item-elite active" onclick="switchMainTab('tab-ia')">🤖 Núcleo de Inteligencia IA</button>
+          <button class="nav-item-elite" onclick="switchMainTab('tab-seguimiento')">📂 Seguimiento Detallado</button>
+          <button class="nav-item-elite" onclick="switchMainTab('tab-eje')">💻 Portal Oficial EJE</button>
+        </nav>
+      </aside>
+
+      <main class="content-viewport">
+        
+        <div id="tab-ia" class="tab-content">
+          <div class="ia-dashboard-header">
+            <h2>Asistente Predictivo de Litigios Penales</h2>
+            <p>Análisis algorítmico computacional sobre piezas procesales de corrupción pública.</p>
+          </div>
+
+          <div class="ia-options-grid">
+            <div class="ai-card" onclick="openPdfModal('Análisis del Caso', 'archivos/acta1.pdf')">
+              <div class="ai-card-icon">📋</div>
+              <h3>Análisis del Caso</h3>
+              <p>Resumen analítico ejecutivo y tipificación penal automatizada.</p>
+            </div>
+            <div class="ai-card" onclick="openPdfModal('Probabilidad de Éxito', 'archivos/apertura2.pdf')">
+              <div class="ai-card-icon">📈</div>
+              <h3>Línea de Probabilidad</h3>
+              <p>Cálculo estocástico de sentencias absolutorias y condenatorias.</p>
+            </div>
+            <div class="ai-card" onclick="openPdfModal('Estrategia de Defensa', 'archivos/formalización3.pdf')">
+              <div class="ai-card-icon">🛡️</div>
+              <h3>Estrategia Legal</h3>
+              <p>Sugerencias tácticas basadas en jurisprudencia vinculante de la Corte Suprema.</p>
+            </div>
+            <div class="ai-card" onclick="openPdfModal('Análisis de Riesgos', 'archivos/acusación4.pdf')">
+              <div class="ai-card-icon">⚠️</div>
+              <h3>Control de Alertas</h3>
+              <p>Detección de vicios procesales y plazos de prescripción inminentes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-seguimiento" class="tab-content hidden">
+          <div class="seguimiento-layout-container">
+            <div class="panel-sub-tabs">
+              <h3 class="panel-section-title">Piezas Procesales Autenticadas</h3>
+              
+              <div class="sub-tabs-container-grid">
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/acta1.pdf', 'Documento 1: Acta de Denuncia Verbal')">
+                  <img src="qr/acta1.jpg" class="qr-btn-thumbnail" alt="QR Acta">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Acta de Denuncia</span>
+                    <span class="doc-desc-tab">Acta de denuncia verbal</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/apertura2.pdf', 'Documento 2: Apertura de Investigación Preliminar')">
+                  <img src="qr/apertura2.jpg" class="qr-btn-thumbnail" alt="QR Apertura">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Apertura de Investigación</span>
+                    <span class="doc-desc-tab">Apertura de investigación preliminar</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/formalización3.pdf', 'Documento 3: Disposición de Formalización Disposicional')">
+                  <img src="qr/formalización3.jpg" class="qr-btn-thumbnail" alt="QR Formalización">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Formalización y Continuación</span>
+                    <span class="doc-desc-tab">Formalización de investigación</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/acusación4.pdf', 'Documento 4: Requerimiento de Acusación Directa')">
+                  <img src="qr/acusación4.jpg" class="qr-btn-thumbnail" alt="QR Acusación">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Acusación Directa</span>
+                    <span class="doc-desc-tab">Acusación directa formulada</span>
+                  </div>
+                </button>
+
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/sentencia5.pdf', 'Documento 5: Sentencia Condenatoria de Primera Instancia')">
+                  <img src="qr/sentencia5.jpg" class="qr-btn-thumbnail" alt="QR Sentencia">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Sentencia</span>
+                    <span class="doc-desc-tab">Sentencia emitida por magistrado</span>
+                  </div>
+                </button>
+                
+                <button class="sub-tab-card" onclick="cambiarSubTab(this, 'archivos/auto6.pdf', 'Documento 6: Auto de Consentimiento y Archivo Definitivo')">
+                  <img src="qr/auto6.jpg" class="qr-btn-thumbnail" alt="QR Auto">
+                  <div class="doc-info">
+                    <span class="doc-title-tab">Auto</span>
+                    <span class="doc-desc-tab">Auto de consentimiento judicial</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-viewer-pdf">
+              <div class="viewer-header-premium">
+                <h4 id="sub-viewer-title">Visualizador Oficial de Expedientes</h4>
+              </div>
+              <div id="sub-pdf-frame" class="sub-pdf-container-premium">
+                <p class="loading-text">Selecciona una pieza procesal para inicializar el visor interactivo...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-eje" class="tab-content hidden">
+          <div class="eje-access-card">
+            <div class="eje-visual-header">
+              <span style="font-size: 3.5rem; display: block;">💻</span>
+              <div class="eje-status-indicator">Canal Académico UNA Sincronizado</div>
+            </div>
+            <div class="eje-body">
+              <h3>Expediente Judicial Electrónico (EJE)</h3>
+              <p>Pasarela externa de interconexión con las bases de datos de la Corte Superior de Justicia.</p>
+              <a href="https://eje.pj.gob.pe/eje/forms/login.html" target="_blank" rel="noopener noreferrer" class="btn-premium">ABRIR PORTAL EJE OFICIAL</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="modal-pdf-viewer" class="modal-premium-overlay hidden">
+    <div class="modal-premium-window">
+      <div class="modal-premium-header">
+        <h3 id="modal-document-title">Documento Digital Autenticado</h3>
+        <button class="btn-close-modal" onclick="closePdfModal()">×</button>
+      </div>
+      <div id="modal-pdf-body" class="modal-premium-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
